@@ -13,4 +13,7 @@ def sortArithmeticFactory(sortName:str)->callable:
     elif sortName == "SelectionSort":
         from SelectionSort import is_over_SelectionSort
         return is_over_SelectionSort
+    elif sortName == "InsertionSort":
+        from InsertionSort import is_over_InsertionSort
+        return is_over_InsertionSort
     
