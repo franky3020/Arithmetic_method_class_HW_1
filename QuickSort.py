@@ -8,30 +8,41 @@ Created on Sun Apr  5 18:34:03 2020
 def is_over_QuickSort (randomList:list)->bool:
     quicksort(randomList, 0, len(randomList) - 1 )
     
+    
 def quicksort(input_list:list, left, right):
-   
-    if left >= right :
-        return
-
-    i = left                    
-    j = right                    
-    target = input_list[left]               
-
-    while i != j:                  
-        while input_list[j] > target and i < j:   
-            j -= 1
-        while input_list[i] <= target and i < j:  
-            i += 1
-        if i < j:                        
-            input_list[i], input_list[j] = input_list[j], input_list[i] 
-
-   
-    input_list[left] = input_list[i] 
-    input_list[i] = target
-
-    quicksort(input_list, left, i-1)   
-    quicksort(input_list, i+1, right)  
+    
+    subRange = []
+    
+    if left < right :
+        subRange.append(right)
+        subRange.append(left)
         
+        while(len(subRange) > 0):
+            in_Range_left_i = subRange.pop()
+            in_Range_right_i = subRange.pop()
+            mid_index = partition(input_list, in_Range_left_i, in_Range_right_i)
+            if(mid_index > in_Range_left_i + 1 ):
+                subRange.append( mid_index - 1 ) # push right index
+                subRange.append( in_Range_left_i ) # push left index
+            
+            if(mid_index < in_Range_right_i - 1):
+                subRange.append( in_Range_right_i ) # push right index
+                subRange.append( mid_index + 1 ) # push left index
+        
+        
+def partition(input_list:list, left, right):
+    target = input_list[left];
+    while (left < right):
+        while (left < right and target <= input_list[right]):
+            right = right - 1
+        input_list[left] = input_list[right];
+        
+        while (left < right and target >= input_list[left]):
+            left = left + 1
+        input_list[right] = input_list[left];
+    
+    input_list[left] = target;
+    return left;
 
 
 if __name__ == '__main__': #is for test
