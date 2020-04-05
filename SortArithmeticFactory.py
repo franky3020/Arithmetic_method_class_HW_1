@@ -4,16 +4,18 @@ Created on Sun Apr  5 17:04:27 2020
 
 @author: frrr
 """
-
+from BubbleSort import is_over_BubbleSort
+from SelectionSort import is_over_SelectionSort 
+from InsertionSort import is_over_InsertionSort
+from QuickSort import is_over_QuickSort
 
 def sortArithmeticFactory(sortName:str)->callable:
     if sortName == "BubbleSort":
-        from BubbleSort import is_over_BubbleSort 
         return is_over_BubbleSort
     elif sortName == "SelectionSort":
-        from SelectionSort import is_over_SelectionSort
         return is_over_SelectionSort
     elif sortName == "InsertionSort":
-        from InsertionSort import is_over_InsertionSort
         return is_over_InsertionSort
+    elif sortName == "QuickSort":
+        return is_over_QuickSort
     

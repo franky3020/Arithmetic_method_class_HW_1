@@ -9,6 +9,7 @@ import unittest
 from BubbleSort import is_over_BubbleSort 
 from SelectionSort import is_over_SelectionSort
 from InsertionSort import is_over_InsertionSort
+from QuickSort import is_over_QuickSort
 
 class TestSort(unittest.TestCase):
     
@@ -25,6 +26,11 @@ class TestSort(unittest.TestCase):
     def test_InsertionSort(self):
         testList = [2,50,4,20,2,11,3,5]
         is_over_SelectionSort(testList)
+        self.assertEqual(testList, [2, 2, 3, 4, 5, 11, 20, 50])
+        
+    def test_Quicksort(self):
+        testList = [2,50,4,20,2,11,3,5]
+        is_over_QuickSort(testList)
         self.assertEqual(testList, [2, 2, 3, 4, 5, 11, 20, 50])
  
 
