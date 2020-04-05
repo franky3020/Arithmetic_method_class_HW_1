@@ -11,7 +11,7 @@ from SortArithmeticFactory import sortArithmeticFactory
 
 if __name__ == '__main__':
     
-    sortKinds = ["BubbleSort", "SelectionSort", "InsertionSort"]
+    sortKinds = ["BubbleSort", "SelectionSort", "InsertionSort", "QuickSort"]
     saveSortRunTime = {}
     # init saveSortRunTime
     for sortKind in sortKinds:
@@ -34,7 +34,8 @@ if __name__ == '__main__':
             
             writer.writerow([saveSortRunTime[sortKinds[0]][testArraySize], \
                             saveSortRunTime[sortKinds[1]][testArraySize], \
-                            saveSortRunTime[sortKinds[2]][testArraySize]])
+                            saveSortRunTime[sortKinds[2]][testArraySize], \
+                            saveSortRunTime[sortKinds[3]][testArraySize]])
     
 
 def count_run_time(sortListFunction:callable(list), randomList:list)->float:
