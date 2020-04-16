@@ -9,6 +9,22 @@ import random
 import csv
 from SortArithmeticFactory import sortArithmeticFactory
 
+def count_run_time(sortListFunction:callable(list), randomList:list)->float:
+    print("start")
+    t1 = time.time()
+    sortListFunction(randomList)
+    t2 = time.time()
+    print("stop")
+    print("Run rime: ",t2 - t1)
+    return t2 - t1
+    
+def generateRandomList(listSize:int)->list:
+    randomlist = []
+    for i in range(0,listSize):
+        n = random.randint(1,300000)
+        randomlist.append(n)
+    return randomlist
+    
 if __name__ == '__main__':
     
     sortKinds = ["BubbleSort", "SelectionSort", "InsertionSort", "QuickSort"]
@@ -36,25 +52,6 @@ if __name__ == '__main__':
                             saveSortRunTime[sortKinds[1]][testArraySize], \
                             saveSortRunTime[sortKinds[2]][testArraySize], \
                             saveSortRunTime[sortKinds[3]][testArraySize]])
-    
-
-def count_run_time(sortListFunction:callable(list), randomList:list)->float:
-    print("start")
-    t1 = time.time()
-    sortListFunction(randomList)
-    t2 = time.time()
-    print("stop")
-    print("Run rime: ",t2 - t1)
-    return t2 - t1
-    
-def generateRandomList(listSize:int)->list:
-    randomlist = []
-    for i in range(0,listSize):
-        n = random.randint(1,300000)
-        randomlist.append(n)
-    return randomlist
-    
-
 
 
 
