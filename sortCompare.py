@@ -10,6 +10,7 @@ import csv
 from SortArithmeticFactory import sortArithmeticFactory
 
 def count_run_time(sortListFunction:callable(list), randomList:list)->float:
+    randomList=randomList.copy()
     print("start")
     t1 = time.time()
     sortListFunction(randomList)
@@ -21,13 +22,13 @@ def count_run_time(sortListFunction:callable(list), randomList:list)->float:
 def generateRandomList(listSize:int)->list:
     randomlist = []
     for i in range(0,listSize):
-        n = random.randint(1,300000)
+        n = random.randint(1,3000)
         randomlist.append(n)
     return randomlist
     
 if __name__ == '__main__':
     
-    sortKinds = ["BubbleSort", "SelectionSort", "InsertionSort", "QuickSort"]
+    sortKinds = ["BubbleSort", "SelectionSort", "InsertionSort", "QuickSort", "HeapSort"]
     saveSortRunTime = {}
     # init saveSortRunTime
     for sortKind in sortKinds:
@@ -48,10 +49,10 @@ if __name__ == '__main__':
         writer.writerow(sortKinds)
         for testArraySize in range(len(testArraySizes)):
             
-            writer.writerow([saveSortRunTime[sortKinds[0]][testArraySize], \
-                            saveSortRunTime[sortKinds[1]][testArraySize], \
-                            saveSortRunTime[sortKinds[2]][testArraySize], \
-                            saveSortRunTime[sortKinds[3]][testArraySize]])
+            out_csv_save = []
+            for i in range(len(sortKinds)):
+                out_csv_save.append(saveSortRunTime[sortKinds[i]][testArraySize])
+            writer.writerow(out_csv_save)
 
 
 

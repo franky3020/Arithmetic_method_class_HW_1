@@ -8,6 +8,7 @@ from BubbleSort import is_over_BubbleSort
 from SelectionSort import is_over_SelectionSort 
 from InsertionSort import is_over_InsertionSort
 from QuickSort import is_over_QuickSort
+from HeapSort import is_over_HeapSort
 
 def sortArithmeticFactory(sortName:str)->callable:
     if sortName == "BubbleSort":
@@ -18,4 +19,6 @@ def sortArithmeticFactory(sortName:str)->callable:
         return is_over_InsertionSort
     elif sortName == "QuickSort":
         return is_over_QuickSort
+    elif sortName == "HeapSort":
+        return is_over_HeapSort
     
