@@ -10,7 +10,6 @@ import csv
 from SortArithmeticFactory import sortArithmeticFactory
 
 def count_run_time(sortListFunction:callable(list), randomList:list)->float:
-    randomList=randomList.copy()
     print("start")
     t1 = time.time()
     sortListFunction(randomList)
@@ -29,19 +28,21 @@ def generateRandomList(listSize:int)->list:
 if __name__ == '__main__':
     
     sortKinds = ["BubbleSort", "SelectionSort", "InsertionSort", "QuickSort", "HeapSort"]
+  
     saveSortRunTime = {}
     # init saveSortRunTime
     for sortKind in sortKinds:
         saveSortRunTime[sortKind] = []
     
     
-    testArraySizes = [500,1000,1500,2000,2500,3000]
+    testArraySizes = [50000, 100000, 150000, 200000, 250000, 300000]
     
     for testArraySize in testArraySizes:
         randomList = generateRandomList(testArraySize)
         
         for sortKind in sortKinds:
-            run_time = count_run_time( sortArithmeticFactory(sortKind),  randomList)
+            randomList_copy = randomList.copy()
+            run_time = count_run_time( sortArithmeticFactory(sortKind),  randomList_copy)
             saveSortRunTime[sortKind].append(run_time)
     
     with open('sortRunTime.csv', 'w', newline='') as csvfile:
