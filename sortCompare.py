@@ -9,7 +9,7 @@ import random
 import csv
 from SortArithmeticFactory import sortArithmeticFactory
 
-def count_run_time(sortListFunction:callable(list), randomList:list)->float:
+def count_run_time(sortListFunction, randomList:list)->float:
     print("start")
     t1 = time.time()
     sortListFunction(randomList)
